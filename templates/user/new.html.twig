@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <h1>Create user</h1>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            {% include 'user/form.html.twig' with {form: form} %}
+        </div>
+    </div>
+{% endblock %}

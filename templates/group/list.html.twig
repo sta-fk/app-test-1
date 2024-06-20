@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <h1>Users</h1>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for group in groups %}
+                <tr>
+                    <th scope="row">{{ group.id }}</th>
+                    <td>{{ group.name }}</td>
+                    <td>
+                        <a class="btn btn-outline-dark" role="button" href="{{ path('group_edit', {'id': group.id}) }}">Edit</a>
+                        <a class="btn btn-outline-dark" role="button" href="{{ path('group_delete', {'id': group.id}) }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-dark" href="{{ path('group_new') }}" role="button">Create group</a>
+        </div>
+    </div>
+{% endblock %}
