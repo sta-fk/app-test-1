@@ -7,6 +7,11 @@ RUN apt update \
     && docker-php-ext-enable apcu \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip
+RUN set -ex; \
+  apt-get install --no-install-recommends -y \
+    libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
+  && docker-php-ext-configure gd --with-freetype --with-jpeg \
+  && docker-php-ext-install -j$(nproc) gd
 
 WORKDIR /var/www
 
